@@ -1,0 +1,54 @@
+.btnPokemon {
+  display: flex;
+  margin-top: 2rem;
+  height: 3rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #000;
+  width: 90%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.containerProfile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+.containerMoves {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  width: 50%;
+}
+
+.imgPokemon {
+  width: 20rem;
+}
+
+.namePokemon {
+  text-transform: uppercase;
+  color: #000;
+}
+
+.ulPokemons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: black;
+  width: 90%;
+  padding: 2rem;
+  border-radius: 7px;
+}
+
+.liPokemon {
+  color: #fff;
+  text-transform: capitalize;
+}

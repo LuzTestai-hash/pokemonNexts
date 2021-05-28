@@ -1,0 +1,8 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["standard", "standard-jsx", "standard-react", "prettier-standard/prettier-file"],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": 0
+  }
+}

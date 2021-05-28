@@ -1,0 +1,38 @@
+.navbarBg {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 5rem;
+}
+.title {
+  display: flex;
+}
+.title a {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #feca1b !important;
+  text-shadow: 1px 1px 1px #000, -1px -1px 1px #000, 1px -1px 1px #000, -4px 4px 1px #000;
+  font-family: revert;
+  text-decoration-style: dotted;
+  letter-spacing: 0.1rem;
+  text-decoration-line: none;
+}
+
+.containerNav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 3rem;
+}
+
+.btnLogOut {
+  margin-top: 2rem;
+  width: 10%;
+  height: 3rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #feca1b;
+  background-color: #000;
+}
