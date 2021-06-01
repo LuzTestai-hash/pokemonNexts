@@ -1,21 +1,19 @@
-import { useEffect, useState } from 'react'
-import authService from '../../services/auth'
+import { useState } from 'react'
 import style from './auth-form.module.scss'
-import { useCookies } from 'react-cookie'
+import cookie from 'js-cookie'
 import { useRouter } from 'next/router'
+import authService from '../../services/auth'
 
 export default function AuthForm() {
   //     “email”: “eve.holt@reqres.in”,
   //     “password”: “cityslicka”
-
-  const [cookies, setCookie] = useCookies()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState(false)
   const [enabled, setEnabled] = useState(false)
   const [errorMessage, setErrorMessage] = useState([{ email: '' }, { password: '' }])
   const router = useRouter()
-  const token = cookies.token
+  const token = cookie.get('token')
 
   if (token) {
     router.push('/pokemons')
@@ -23,11 +21,9 @@ export default function AuthForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-
     await authService
       .authenticate(email, password)
-      .then((res) => setCookie('token', res.token))
-      .then(() => router.push('/pokemons'))
+      .then((res) => authService.setToken(res.token))
       .catch(() => {
         setError(true)
       })

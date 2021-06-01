@@ -1,19 +1,17 @@
-// import { Container, Navbar } from 'react-bootstrap'
 import Link from 'next/link'
 import style from './header.module.scss'
-import { useCookies } from 'react-cookie'
+import cookie from 'js-cookie'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import authService from '../../services/auth'
 
-function Header() {
-  // eslint-disable-next-line no-unused-vars
-  const [cookies, setCookie, removeCookie] = useCookies()
-  const token = cookies.token
+export default function Header() {
   const router = useRouter()
   const [linkHome, setLinkHome] = useState('')
+  const token = cookie.get('token')
 
   function logOut() {
-    removeCookie('token')
+    authService.removeToken()
     router.push('/login')
   }
   useEffect(() => {
@@ -35,5 +33,3 @@ function Header() {
     </div>
   )
 }
-
-export default Header

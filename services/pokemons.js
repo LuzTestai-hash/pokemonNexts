@@ -10,6 +10,14 @@ pokemonService.getAllPokemons = function (id) {
       throw err
     })
 }
+pokemonService.getAllPokemonsByName = function (name) {
+  return api
+    .get(`/pokemon/${name}`)
+    .then((res) => res.data)
+    .catch((err) => {
+      throw err
+    })
+}
 pokemonService.getCountTotal = function () {
   return api
     .get(`/pokemon`)
@@ -30,7 +38,7 @@ pokemonService.getPokemonPagination = function (offSet, limit) {
 
 pokemonService.getPokemonsEvolutionsById = (id) => {
   return api
-    .get(`/evolution-chain/${id}/`)
+    .get(`/evolution-chain/${id}`)
     .then((res) => res.data)
     .catch((err) => {
       throw err

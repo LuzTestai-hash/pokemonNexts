@@ -3,9 +3,9 @@ import style from './list-pokemon.module.scss'
 import Link from 'next/link'
 import pokemonService from '../../services/pokemons.js'
 import { useRouter } from 'next/router'
-import { useCookies } from 'react-cookie'
+import cookie from 'js-cookie'
 
-const ListPokemon = ({ pokemonsAll, totalPagesPagination }) => {
+export default function ListPokemon({ pokemonsAll, totalPagesPagination }) {
   const router = useRouter()
   const [totalPages] = useState(totalPagesPagination)
   const [loading, setLoading] = useState(false)
@@ -14,13 +14,7 @@ const ListPokemon = ({ pokemonsAll, totalPagesPagination }) => {
   const [offSet, setOffSet] = useState(0)
   const [search, setSearch] = useState(null)
   const limit = 20
-  const [cookies] = useCookies()
-  const token = cookies.token
-
-  useEffect(() => {
-    const filterPokemons = pokemons.filter((pokemon) => pokemon.name.includes(search))
-    setFilterPokemons(filterPokemons)
-  }, [search])
+  const token = cookie.get('token')
 
   useEffect(() => {
     if (!token) {
@@ -34,6 +28,11 @@ const ListPokemon = ({ pokemonsAll, totalPagesPagination }) => {
       setLoading(false)
     }
   }, [])
+
+  useEffect(() => {
+    const filterPokemons = pokemons.filter((pokemon) => pokemon.name.includes(search))
+    setFilterPokemons(filterPokemons)
+  }, [search])
 
   useEffect(() => {
     const getPokemonsPage = async () => {
@@ -120,5 +119,3 @@ const ListPokemon = ({ pokemonsAll, totalPagesPagination }) => {
     </div>
   )
 }
-
-export default ListPokemon
